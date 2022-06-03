@@ -1,38 +1,62 @@
 .App {
   text-align: center;
+  background: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  text-align: center;
+  height: 2rem;
+  line-height: 2rem;
+  background: yellow;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.searchbox {
+  text-align: center;
+  margin: auto;
+  height: 10rem;
+  background: white;
+  margin-top: 4rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.searchbox--input {
+  width: 50%;
+  height: 2rem;
+  border-radius: 10px;
+}
+
+.searchbox .suggestion-container {
+  margin: auto;
+  width: 80%;
+  line-height: 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.searchbox .suggestion-container .suggestion{
+  flex-grow: 1;
+  background: white;
+  color: black;
+  margin: 1px;
+  border: 2px solid black;
+  font-size: 1rem;
+  border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.searchbox .suggestion-container .suggestion:active {
+  transform: scale(0.9);
 }
+
+.searchbox .suggestion-container .suggestion:hover{
+  background: lightblue;
+}
+
+
+/* .results-container {
+  text-align: center;
+  margin: auto;
+  height: 30rem;
+  line-height: 30rem;
+  background: blue;
+} */
