@@ -19,15 +19,31 @@
 }
 
 .searchbox--input {
-  width: 50%;
-  height: 2rem;
+  width: 30%;
+  min-width: 300px;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 2rem;
   border-radius: 10px;
 }
 
+.searchbox--output {
+  width: 30%;
+  min-width: 300px;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 2rem;
+  border-radius: 10px;
+}
+
+.searchbox--input::placeholder {
+  text-indent: 5px;
+}
+
 .searchbox .suggestion-container {
+  position: relative;
   margin: auto;
-  width: 80%;
-  line-height: 2rem;
+  width: 20%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -35,21 +51,20 @@
 }
 
 .searchbox .suggestion-container .suggestion{
-  flex-grow: 1;
+  flex: 1 0 100%;
   background: white;
   color: black;
   margin: 1px;
   border: 2px solid black;
   font-size: 1rem;
   border-radius: 5px;
-}
-
-.searchbox .suggestion-container .suggestion:active {
-  transform: scale(0.9);
+  height: auto;
+  padding: 5px;
+  text-align: left;
 }
 
 .searchbox .suggestion-container .suggestion:hover{
-  background: lightblue;
+  transform: scale(1.1);
 }
 
 

@@ -1,6 +1,5 @@
 import React from "react"
-import SearchBox from "./SearchBox"
-import Results from "./Results"
+import MainContainer from "./MainContainer"
 import Data from "../data/countryData"
 
 
@@ -21,8 +20,7 @@ export default function Body() {
 
 	return (
 		<div>	
-				<SearchBox function={displayTest} data={countryData}/>
-				<Results />
+				<MainContainer function={displayTest} data={countryData}/>
 		</div>
 	)
 }
