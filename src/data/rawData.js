@@ -855,6 +855,10 @@ export default
         "city": "Dushanbe"
     },
     {
+        "country": "Taiwan",
+        "city": "Taipei"
+    },
+    {
         "country": "Tanzania",
         "city": "Dodoma"
     },

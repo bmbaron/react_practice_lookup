@@ -64,6 +64,7 @@ export default function MainContainer(props) {
 
 	function handleKeyDown(event) {
 		if(event.keyCode === 8 || event.keyCode === 46) {
+			event.preventDefault()
 			setCountry([{show: false}, {name: ""}])
 			setCapital([{show: false}, {name: ""}])
 			setSuggestions([])
@@ -77,47 +78,56 @@ export default function MainContainer(props) {
 	}
 
 	return (
-		<div className="searchbox">
+		<div>
+			<div className="container-main">
+				<div className="container-fields">
+					{capital[0].show &&
+						<label htmlFor="country-input">country</label>
+					}
 
-			{capital[0].show &&
-				<label htmlFor="country-input">country</label>
-			}
+					<input 
+						id="country-input"
+						className="input"
+						type="text"
+						placeholder="enter a country"
+						name="country"
+						onChange={updateCountry}
+						onKeyDown={handleKeyDown}
+						value={country[1].name}
+						autoComplete="off"
+					/>
 
-			<input 
-				id="country-input"
-				className="searchbox--input"
-				type="text"
-				placeholder="enter a country"
-				name="country"
-				onChange={updateCountry}
-				onKeyDown={handleKeyDown}
-				value={country[1].name}
-				autoComplete="off"
-			/>
+					{country[0].show &&
+						<div className="suggestion-container">
+							{suggestions}
+						</div>
+					}
 
-			{!country[0].show &&
-				<button className="button-clear" onClick={clearFields}>clear</button>
-			}
-
-			{country[0].show &&
-				<div className="suggestion-container">
-					{suggestions}
+					{capital[0].show && <label htmlFor="city-input">capital city</label>}
+					{capital[0].show &&
+						<input 
+							id="city-input"
+							className="output"
+							type="text"
+							placeholder="capital"
+							name="capital"
+							readOnly={true}
+							value={capital[1].name}
+						/>
+					}
 				</div>
-			}
+				<div className="container-buttons">
+					{!country[0].show &&
+						<button className="button-clear" onClick={clearFields}>clear</button>
+					}
+				</div>
+			</div>
 
-			{capital[0].show && <label htmlFor="city-input">capital city</label>}
 			{capital[0].show &&
-				<input 
-					id="city-input"
-					className="searchbox--output"
-					type="text"
-					placeholder="capital"
-					name="capital"
-					readOnly={true}
-					value={capital[1].name}
-				/>
+			<div className="image-container">
+				<img className="image-flag" src={image} alt="country flag"></img>
+			</div>
 			}
-			<img className="image-flag" src={image} alt="country flag"></img>
 		</div>
 	)
 }
