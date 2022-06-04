@@ -1,18 +1,22 @@
 import React from "react"
 import Suggestion from "./Suggestion"
+import Image from "./Image"
 
 export default function MainContainer(props) {
 
-	const [country, setCountry] = React.useState("")
-	const [capital, setCapital] = React.useState("")
+	const [image, setImage] = React.useState("")
+
+	const [country, setCountry] = React.useState([{show: false}, {name: ""}])
+	const [capital, setCapital] = React.useState([{show: false}, {name: ""}])
 	const [suggestions, setSuggestions] = React.useState([])
 	
-	function findSuggestions(val) {
+	function findSuggestions(input) {
+		const val = input.toLowerCase()
 		return (
 				props.data.filter(place => {
 				let numMatched = 0;
 				for (let i = 0; i < val.length; i++) {
-					if (place.country.charAt(i) === val.charAt(i)) {
+					if (place.country.charAt(i) === val.charAt(i) || place.country.charAt(i).toLowerCase() === val.charAt(i)){
 						numMatched += 1
 					}
 				}
@@ -27,23 +31,24 @@ export default function MainContainer(props) {
 	function findCapital(event) {
 		return (
 				props.data.forEach(place => {
-					place.country === event.target.value && setCapital(place.city)
+					place.country === event.target.value && setCapital([{show: true}, {name: place.city}])
 			})
 		)
 	}
 
 	function manageSuggestions(event, country) {
-		setCountry(country)
+		setCountry([{show: false}, {name: country}])
 		setSuggestions([])
 		findCapital(event)
+		Promise.resolve(Image(event.target.value)).then((result)=> setImage(result));
 	}
 
 
 	function displaySuggestions(val) {
 		setSuggestions(
-			findSuggestions(val).map(el => {
+			findSuggestions(val).map(suggestion => {
 				return (
-					<Suggestion country={el.country} function={manageSuggestions} key={el.country} />
+					<Suggestion country={suggestion.country} function={manageSuggestions} key={suggestion.country} />
 				)
 			})
 		)
@@ -51,42 +56,68 @@ export default function MainContainer(props) {
 
 	function updateCountry(event) {
 		event.preventDefault()
-		setCountry(event.target.value)
+		setCountry([{show: true}, {name: event.target.value}])
+		setCapital([{show: false}, {name: ""}])
 		displaySuggestions(event.target.value)
 		// findCapital(event.target.value)
 	}
 
 	function handleKeyDown(event) {
 		if(event.keyCode === 8 || event.keyCode === 46) {
-			setCountry("")
-			setCapital("")
+			setCountry([{show: false}, {name: ""}])
+			setCapital([{show: false}, {name: ""}])
 			setSuggestions([])
 		}
 	}
 
+	function clearFields() {
+		setCountry([{show: false}, {name: ""}])
+		setCapital([{show: false}, {name: ""}])
+		setSuggestions([])
+	}
+
 	return (
 		<div className="searchbox">
+
+			{capital[0].show &&
+				<label htmlFor="country-input">country</label>
+			}
+
 			<input 
+				id="country-input"
 				className="searchbox--input"
 				type="text"
-				placeholder="look up a country"
+				placeholder="enter a country"
 				name="country"
 				onChange={updateCountry}
 				onKeyDown={handleKeyDown}
-				value={country}
+				value={country[1].name}
 				autoComplete="off"
 			/>
-			<div className="suggestion-container">
-				{suggestions}
-			</div>
-			<input 
-				className="searchbox--output"
-				type="text"
-				placeholder="capital"
-				name="capital"
-				readOnly={true}
-				value={capital}
-			/>
+
+			{!country[0].show &&
+				<button className="button-clear" onClick={clearFields}>clear</button>
+			}
+
+			{country[0].show &&
+				<div className="suggestion-container">
+					{suggestions}
+				</div>
+			}
+
+			{capital[0].show && <label htmlFor="city-input">capital city</label>}
+			{capital[0].show &&
+				<input 
+					id="city-input"
+					className="searchbox--output"
+					type="text"
+					placeholder="capital"
+					name="capital"
+					readOnly={true}
+					value={capital[1].name}
+				/>
+			}
+			<img className="image-flag" src={image} alt="country flag"></img>
 		</div>
 	)
 }

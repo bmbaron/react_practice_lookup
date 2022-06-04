@@ -32,7 +32,7 @@ export default
     },
     {
         "country": "Antarctica",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Antigua and Barbuda",
@@ -116,7 +116,7 @@ export default
     },
     {
         "country": "Bouvet Island",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Brazil",
@@ -124,7 +124,7 @@ export default
     },
     {
         "country": "British Indian Ocean Territory",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Brunei",
@@ -304,7 +304,7 @@ export default
     },
     {
         "country": "French Southern territories",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Gabon",
@@ -372,7 +372,7 @@ export default
     },
     {
         "country": "Heard Island and McDonald Islands",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Holy See (Vatican City State)",
@@ -804,7 +804,7 @@ export default
     },
     {
         "country": "South Georgia and the South Sandwich Islands",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "South Korea",
@@ -820,7 +820,7 @@ export default
     },
     {
         "country": "Sri Lanka",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Sudan",
@@ -924,7 +924,7 @@ export default
     },
     {
         "country": "United States Minor Outlying Islands",
-        "city": null
+        "city": "(no capital)"
     },
     {
         "country": "Uruguay",
