@@ -1,6 +1,6 @@
 {
   "name": "react_practice_lookup",
-  "homepage": "http://bmbaron.github.io/react_practice_form",
+  "homepage": "http://bmbaron.github.io/react_practice_lookup",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
