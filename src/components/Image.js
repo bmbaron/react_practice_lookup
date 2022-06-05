@@ -27,6 +27,10 @@ const imageURL = fetch(url)
 				else {
 					image = ""
 				}
+				if (!image.includes("flag") && !image.includes("Flag")){
+					image = ""
+				}
+
 				return (image === "" ? backupImage : image)
     })
     .catch(function(error){console.log(error);});
