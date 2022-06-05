@@ -55,13 +55,15 @@ export default function MainContainer(props) {
 
 	function updateCountry(event) {
 		event.preventDefault()
-		setCountry([{show: true}, {name: event.target.value}])
-		setCapital([{show: false}, {name: ""}])
-		displaySuggestions(event.target.value)
+			setCountry([{show: true}, {name: event.target.value}])
+			setCapital([{show: false}, {name: ""}])
+			displaySuggestions(event.target.value)
 	}
 
-	function handleKeyDown(event) {
-		if(event.keyCode === 8 || event.keyCode === 46) {
+	function deleteInput(event) {
+		const key = event.keyCode || event.charCode
+		if(key === 8 || key === 46) {
+			console.log(event.which)
 			event.preventDefault()
 			setCountry([{show: false}, {name: ""}])
 			setCapital([{show: false}, {name: ""}])
@@ -86,7 +88,7 @@ export default function MainContainer(props) {
 						placeholder="enter a country"
 						name="country"
 						onChange={updateCountry}
-						onKeyDown={handleKeyDown}
+						onKeyDown={deleteInput}
 						value={country[1].name}
 						autoComplete="off"
 					/>

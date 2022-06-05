@@ -53,7 +53,7 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
   }
   .image-flag {
     height: 20vh !important;
-    width: auto;
+    width: 30vh !important;
   }
 }
 
@@ -150,11 +150,13 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
 }
 
 .image-flag {
-  margin-top: 5rem;
+  background: white;
+  margin-top: 4rem;
   height: 40vh;
-  width: auto;
+  width: 60vh;
   border-radius: 20px;
   opacity: 0.9;
   z-index: -1;
   box-shadow: 2px 5px 5px #888888;
+  object-fit: cover;
 }
