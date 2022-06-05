@@ -1,11 +1,11 @@
 import React from "react"
 import Suggestion from "./Suggestion"
 import Image from "./Image"
+import Flag from "./Flag"
 
 export default function MainContainer(props) {
 
 	const [image, setImage] = React.useState("")
-
 	const [country, setCountry] = React.useState([{show: false}, {name: ""}])
 	const [capital, setCapital] = React.useState([{show: false}, {name: ""}])
 	const [suggestions, setSuggestions] = React.useState([])
@@ -43,7 +43,6 @@ export default function MainContainer(props) {
 		Promise.resolve(Image(event.target.value)).then((result)=> setImage(result));
 	}
 
-
 	function displaySuggestions(val) {
 		setSuggestions(
 			findSuggestions(val).map(suggestion => {
@@ -59,7 +58,6 @@ export default function MainContainer(props) {
 		setCountry([{show: true}, {name: event.target.value}])
 		setCapital([{show: false}, {name: ""}])
 		displaySuggestions(event.target.value)
-		// findCapital(event.target.value)
 	}
 
 	function handleKeyDown(event) {
@@ -81,10 +79,6 @@ export default function MainContainer(props) {
 		<div>
 			<div className="container-main">
 				<div className="container-fields">
-					{capital[0].show &&
-						<label htmlFor="country-input">country</label>
-					}
-
 					<input 
 						id="country-input"
 						className="input"
@@ -96,14 +90,11 @@ export default function MainContainer(props) {
 						value={country[1].name}
 						autoComplete="off"
 					/>
-
 					{country[0].show &&
 						<div className="suggestion-container">
 							{suggestions}
 						</div>
 					}
-
-					{capital[0].show && <label htmlFor="city-input">capital city</label>}
 					{capital[0].show &&
 						<input 
 							id="city-input"
@@ -116,17 +107,18 @@ export default function MainContainer(props) {
 						/>
 					}
 				</div>
-				<div className="container-buttons">
-					{!country[0].show &&
-						<button className="button-clear" onClick={clearFields}>clear</button>
-					}
-				</div>
+
+				{country[1].name && 
+					<div className="container-buttons">
+						{!country[0].show &&
+							<button className="button-clear" onClick={clearFields}>clear</button>
+						}
+					</div>
+				}
 			</div>
 
 			{capital[0].show &&
-			<div className="image-container">
-				<img className="image-flag" src={image} alt="country flag"></img>
-			</div>
+				<Flag image={image}/>
 			}
 		</div>
 	)

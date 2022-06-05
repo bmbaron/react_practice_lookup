@@ -3,6 +3,10 @@
   background: black;
 }
 
+body {
+  background: rgb(191, 191, 242);
+}
+
 App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
   display: none;
   visibility: hidden;
@@ -20,43 +24,34 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
 
 .container-main {
   width: 40%;
+  height: 30vh;
   text-align: center;
   margin: auto;
-  height: 10rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.container-fields {
-  margin-right: 2rem;
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   .container-main {
-    flex-direction: column;
-    padding-bottom: 20px;
-    margin-top: 4rem;
-  }
-  .container-fields {
-    margin: 0;
+    width: 90%;
+    padding: 10px;
+    height: 40vh;
   }
   .input, .output {
-    width: 50%;
+    width: 50% !important;
+    height: 3rem !important;
   }
   .button-clear {
-    width: 50vw !important;
-    margin-top: 20px;
-    height: 3rem !important;
-
+    z-index: 1;
   }
   .image-container {
-    margin-top: 0rem;
+    margin-top: -3rem;
+    z-index: -1;
   }
   .image-flag {
-    background: black;
     height: 20vh !important;
     width: auto;
   }
@@ -67,29 +62,29 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
   height: 4rem;
   line-height: 4rem;
   font-size: 2rem;
+  border: none;
   border-radius: 10px;
-  margin: auto;
   outline: none;
   margin-bottom: 1rem;
-}
-
-label, input {
-  display:block;
-  margin: auto;
+  box-shadow: 2px 5px 5px #888888;
+  padding-left: 10px;
 }
 
 .button-clear {
-  width: 5rem;
-  height: 7rem;
-  background: rgb(102, 102, 245);
-  color: white;
-  font-size: 1.5rem;
+  width: 15rem;
+  height: 3rem;
+  margin-top: 20px;
+  background: rgb(245, 240, 102);
+  color: black;
+  font-size: 2rem;
   font-weight: bold;
   border: none;
   border-radius: 20px;
   z-index: 1;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  box-shadow: 2px 5px 5px #888888;
+  z-index: 1;
 }
 
 .button-clear:hover {
@@ -107,6 +102,10 @@ label, input {
   font-size: 2rem;
   border-radius: 10px;
   outline: none;
+  border: none;
+  box-shadow: 2px 5px 5px #888888;
+  background: #e2e1e1;
+  text-indent: 10px;
 }
 
 .input::placeholder, .output::placeholder {
@@ -127,6 +126,7 @@ label, input {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 6px black;
+  background: white;
 }
 
 .suggestion-container .suggestion{
@@ -155,8 +155,8 @@ label, input {
   margin-top: 5rem;
   height: 40vh;
   width: auto;
-  border: 2px solid black;
   border-radius: 20px;
   opacity: 0.9;
   z-index: -1;
+  box-shadow: 2px 5px 5px #888888;
 }
