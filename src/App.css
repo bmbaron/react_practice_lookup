@@ -113,13 +113,12 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
 }
 
 .suggestion-container {
-  position: absolute;
+  position: relative;
   margin: auto;
   width: 30%;
   min-width: 310px;
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   overflow-y: scroll;
   max-height: 50vh;
   align-items: center;
@@ -130,7 +129,6 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
 }
 
 .suggestion-container .suggestion{
-  /* flex: 1 0 10%; */
   background: white;
   color: black;
   margin: 1px;
