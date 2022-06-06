@@ -9,7 +9,7 @@ export default function MainContainer(props) {
 	const [country, setCountry] = React.useState([{show: false}, {name: ""}])
 	const [capital, setCapital] = React.useState([{show: false}, {name: ""}])
 	const [suggestions, setSuggestions] = React.useState([])
-	
+
 	function findSuggestions(input) {
 		const val = input.toLowerCase()
 		return (
@@ -40,6 +40,7 @@ export default function MainContainer(props) {
 		setCountry([{show: false}, {name: country}])
 		setSuggestions([])
 		findCapital(event)
+		setImage("")
 		Promise.resolve(Image(event.target.value)).then((result)=> setImage(result));
 	}
 
@@ -63,11 +64,11 @@ export default function MainContainer(props) {
 	function deleteInput(event) {
 		const key = event.keyCode || event.charCode
 		if(key === 8 || key === 46) {
-			console.log(event.which)
 			event.preventDefault()
 			setCountry([{show: false}, {name: ""}])
 			setCapital([{show: false}, {name: ""}])
 			setSuggestions([])
+			setImage("")
 		}
 	}
 
@@ -75,6 +76,11 @@ export default function MainContainer(props) {
 		setCountry([{show: false}, {name: ""}])
 		setCapital([{show: false}, {name: ""}])
 		setSuggestions([])
+		setImage("")
+	}
+
+	if (!image) {
+		setImage(Image())
 	}
 
 	return (
@@ -119,9 +125,9 @@ export default function MainContainer(props) {
 				}
 			</div>
 
-			{capital[0].show &&
+			{/* {capital[0].show && */}
 				<Flag image={image}/>
-			}
+			{/* } */}
 		</div>
 	)
 }

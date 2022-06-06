@@ -126,6 +126,7 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
   border-radius: 10px;
   box-shadow: 0 2px 6px black;
   background: white;
+  z-index: 1;
 }
 
 .suggestion-container .suggestion{
@@ -147,6 +148,7 @@ App::-webkit-scrollbar-track, App::-webkit-scrollbar-button {
 
 .image-container {
   text-align: center;
+  z-index: -1;
 }
 
 .image-flag {
